@@ -1,0 +1,13 @@
+package com.bjpowernode.springboot.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+public class HiController {
+    @RequestMapping("/boot/hi")
+    public @ResponseBody String sayHi(){
+        return "hi this is spirng boot。。。fdsfd范德萨";
+    }
+}

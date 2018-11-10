@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <title>Title</title>
+</head>
+
+<body th:style="'margin:50px;'">
+<div><a th:href="@{/user/toAddUser}">添加用户</a></div>
+<table class="table table-striped">
+    <caption>条纹表格布局</caption>
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>昵称</th>
+        <th>手机</th>
+        <th>邮箱</th>
+        <th>地址</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="user : ${userList}">
+        <td th:text="${userStat.count}">Tanmay</td>
+        <td th:text="${user.nick}">Bangalore</td>
+        <td th:text="${user.phone}">560001</td>
+        <td th:text="${user.email}">Bangalore</td>
+        <td th:text="${user.address}">560001</td>
+        <td>
+            <a th:href="@{|/user/toUpdate?id=${user.id}|}">修改</a>
+            <a th:href="@{|/user/delete?id=${user.id}|}">删除</a>
+        </td>
+    </tr>
+
+    <tr th:style="'text-align:center;'">
+        <td colspan="6">
+            <span th:if="${curPage <= 1}">
+                首页
+                上一页
+            </span>
+            <span th:if="${curPage > 1}">
+                <a th:href="@{/index}">首页</a>
+                <a th:href="@{|/index?curPage=${curPage-1}|}">上一页</a>
+            </span>
+            <span th:if="${curPage >= totalPages}">
+                下一页
+                尾页
+            </span>
+            <span th:if="${curPage < totalPages}">
+                <a th:href="@{|/index?curPage=${curPage+1}|}">下一页</a>
+                <a th:href="@{|/index?curPage=${totalPages}|}">尾页</a>
+            </span>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

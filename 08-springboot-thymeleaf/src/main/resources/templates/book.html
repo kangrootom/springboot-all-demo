@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Spring boot集成 Thymeleaf</title>
+</head>
+<body>
+
+<!--循环遍历输出-->
+<table>
+    <tr>
+        <td>序号</td>
+        <td>图书名称</td>
+        <td>价格</td>
+        <td>状态</td>
+    </tr>
+    <tr th:each="bk,iter:${books}">
+        <td th:text="${iter.count}">序号</td>
+        <td th:text="${bk.name}">图书名称</td>
+        <td th:text="${bk.price}">价格</td>
+        <td th:text="${bk.status.name == '1' ? '上架':'下架'}">状态</td>
+    </tr>
+</table>
+</body>
+</html>
